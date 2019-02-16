@@ -31,7 +31,7 @@ public class PaperBookBuilder {
 
     public PaperBook build() {
         PaperBook book = new PaperBook();
-        Author author = new Author();
+        Creator author = new Creator();
         author.setFirstName(authorFirstName);
         author.setLastName(authorLastName);
         book.setAuthor(author);
