@@ -104,9 +104,11 @@ public class Main {
                 .duration(152)
                 .build());
 
-        for (Multimedium multimedium : library.getMedia()) {
-            System.out.println(multimedium);
-        }
+        library.getMedia().forEach(System.out::println);
+
+//        for (Multimedium multimedium : library.getMedia()) {
+//            System.out.println(multimedium);
+//        }
 
 
     }
