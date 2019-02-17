@@ -11,14 +11,6 @@ import static org.mockito.Mockito.*;
 
 public class DisplayMultimediaCommandTest {
 
-//    private final Library<Multimedium> library;
-//    private final PrintStream printStream;
-//
-//    public DisplayMultimediaCommandTest(Library<Multimedium> library, PrintStream printStream) {
-//        this.library = library;
-//        this.printStream = printStream;
-//    }
-
     @Test
     public void shouldDisplayMultimediaWhenSomeMultimediaIsAvailable() {
 
