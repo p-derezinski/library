@@ -1,6 +1,7 @@
 package pl.sda.library;
 
 import pl.sda.library.command.Command;
+import pl.sda.library.command.DisplayMultimediaCommand;
 import pl.sda.library.model.*;
 
 import java.util.HashMap;
@@ -16,6 +17,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Map<String, Command> commands = new HashMap<>();
         commands.put("exit", () -> System.exit(0));
+        commands.put("display", new DisplayMultimediaCommand(library, System.out));
         while (true) {
             System.out.println("Podaj komendę: ");
             String commandName = scanner.nextLine();
