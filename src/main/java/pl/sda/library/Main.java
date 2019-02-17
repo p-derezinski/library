@@ -1,11 +1,31 @@
 package pl.sda.library;
 
+import pl.sda.library.command.Command;
 import pl.sda.library.model.*;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        Library<Multimedium> library = createLibrary();
+        Scanner scanner = new Scanner(System.in);
+        Map<String, Command> commands = new HashMap<>();
+        commands.put("exit", () -> System.exit(0));
+        while (true) {
+            System.out.println("Podaj komendę: ");
+            String commandName = scanner.nextLine();
+            Command command = commands.get(commandName);
+            Optional.ofNullable(command).ifPresent(Command::execute);
+        }
+
+    }
+
+    private static Library<Multimedium> createLibrary() {
         Library<Multimedium> library = new Library<>();
         //Library<AudioBook> library_2 = new Library<>();
 
@@ -103,14 +123,7 @@ public class Main {
                 .directorLastName("Polański")
                 .duration(152)
                 .build());
-
-        library.getMedia().forEach(System.out::println);
-
-//        for (Multimedium multimedium : library.getMedia()) {
-//            System.out.println(multimedium);
-//        }
-
-
+        return library;
     }
 
 }
