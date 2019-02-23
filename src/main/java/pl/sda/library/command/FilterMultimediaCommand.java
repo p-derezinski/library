@@ -6,6 +6,7 @@ import pl.sda.library.model.Multimedium;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class FilterMultimediaCommand implements Command {
 
@@ -23,12 +24,17 @@ public class FilterMultimediaCommand implements Command {
     public void execute() {
         Scanner scanner = new Scanner(System.in);
         printStream.println("Typ: ");
-        String s = scanner.nextLine();
-        for (Multimedium multimedium : library.getMedia()) {
-            if (multimedium.getClass().getSimpleName().equals(s)) {
-                printStream.println(multimedium);
-            }
-        }
+        String type = scanner.nextLine();
+//        for (Multimedium multimedium : library.getMedia()) {
+//            if (multimedium.getClass().getSimpleName().equals(s)) {
+//                printStream.println(multimedium);
+//            }
+//        }
+        library.getMedia().stream()
+                .filter(m -> m.getType().equals(type))
+                .forEach(printStream::println);
+
+        //Stream<Multimedium> stream = library.getMedia().stream().parallel().sequential();
     }
 
 }
