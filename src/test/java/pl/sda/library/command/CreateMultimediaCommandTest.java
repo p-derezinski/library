@@ -83,7 +83,7 @@ public class CreateMultimediaCommandTest {
         verify(printStreamMock, times(1)).println("Imię autora: ");
         verify(printStreamMock, times(1)).println("Nazwisko autora: ");
         verify(printStreamMock, times(1)).println("Okładka: ");
-        verify(printStreamMock, times(1)).println("Liczna stron: ");
+        verify(printStreamMock, times(1)).println("Liczba stron: ");
     }
 
     @Test
