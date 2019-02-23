@@ -14,13 +14,15 @@ import static org.mockito.Mockito.*;
 
 public class CreateMultimediaCommandTest {
 
-    public static final String AUDIO_BOOK_W_PUSTYNI_I_W_PUSZCZY_HENRYK_SIENKIEWICZ_MP_3_175 = "AudioBook\nW pustyni i w puszczy\nHenryk\nSienkiewicz\nMP3\n175\n";
+    public static final String TEST_AUDIO_BOOK_INPUT = "AudioBook\nW pustyni i w puszczy\nHenryk\nSienkiewicz\nMP3\n175\n";
+    public static final String TEST_PAPER_BOOK_INPUT = "PaperBook\nW pustyni i w puszczy\nHenryk\nSienkiewicz\nHARD\n300\n";
+    public static final String TEST_MOVIE_INPUT = "Movie\nMarsjanie Atakują\nTim\nBurton\n120\n";
+    public static final String TEST_MAGAZINE_INPUT = "Magazine\nNature\n10\n100\n";
     private InputStream inputStream;
 
     @Before
     public void setUp() {
         inputStream = System.in;
-        System.setIn(new ByteArrayInputStream(AUDIO_BOOK_W_PUSTYNI_I_W_PUSZCZY_HENRYK_SIENKIEWICZ_MP_3_175.getBytes()));
     }
 
     @After
@@ -30,12 +32,11 @@ public class CreateMultimediaCommandTest {
 
     @Test
     public void shouldCreateAudioBookWhenAudioBookTypeWasTyped() {
-
         // given
+        System.setIn(new ByteArrayInputStream(TEST_AUDIO_BOOK_INPUT.getBytes()));
         Library<Multimedium> library = new Library<>();
         PrintStream printStreamMock = mock(PrintStream.class);
         Command command = new CreateMultimediaCommand(library, printStreamMock);
-        //System.setIn();
         // when
         command.execute();
         // then
@@ -55,6 +56,84 @@ public class CreateMultimediaCommandTest {
         verify(printStreamMock, times(1)).println("Nazwisko autora: ");
         verify(printStreamMock, times(1)).println("Format: ");
         verify(printStreamMock, times(1)).println("Czas trwania: ");
+    }
+
+    @Test
+    public void shouldCreatePaperBookWhenPaperBookTypeWasTyped() {
+        // given
+        System.setIn(new ByteArrayInputStream(TEST_PAPER_BOOK_INPUT.getBytes()));
+        Library<Multimedium> library = new Library<>();
+        PrintStream printStreamMock = mock(PrintStream.class);
+        Command command = new CreateMultimediaCommand(library, printStreamMock);
+        // when
+        command.execute();
+        // then
+        PaperBook paperBook = new PaperBookBuilder()
+                .title("W pustyni i w puszczy")
+                .authorFirstName("Henryk")
+                .authorLastName("Sienkiewicz")
+                .cover(Cover.HARD)
+                .pageCount(300)
+                .build();
+        Library<Multimedium> expectedLibrary = new Library<>();
+        expectedLibrary.addMedium(paperBook);
+        assertEquals(expectedLibrary, library);
+        verify(printStreamMock, times(1)).println("Typ: ");
+        verify(printStreamMock, times(1)).println("Tytuł: ");
+        verify(printStreamMock, times(1)).println("Imię autora: ");
+        verify(printStreamMock, times(1)).println("Nazwisko autora: ");
+        verify(printStreamMock, times(1)).println("Okładka: ");
+        verify(printStreamMock, times(1)).println("Liczna stron: ");
+    }
+
+    @Test
+    public void shouldCreateMovieWhenMovieTypeWasTyped() {
+        // given
+        System.setIn(new ByteArrayInputStream(TEST_MOVIE_INPUT.getBytes()));
+        Library<Multimedium> library = new Library<>();
+        PrintStream printStreamMock = mock(PrintStream.class);
+        Command command = new CreateMultimediaCommand(library, printStreamMock);
+        // when
+        command.execute();
+        // then
+        Movie movie = new MovieBuilder()
+                .title("Marsjanie Atakują")
+                .directorFirstName("Tim")
+                .directorLastName("Burton")
+                .duration(120)
+                .build();
+        Library<Multimedium> expectedLibrary = new Library<>();
+        expectedLibrary.addMedium(movie);
+        assertEquals(expectedLibrary, library);
+        verify(printStreamMock, times(1)).println("Typ: ");
+        verify(printStreamMock, times(1)).println("Tytuł: ");
+        verify(printStreamMock, times(1)).println("Imię reżysera: ");
+        verify(printStreamMock, times(1)).println("Nazwisko reżysera: ");
+        verify(printStreamMock, times(1)).println("Czas trwania: ");
+    }
+
+    @Test
+    public void shouldCreateMagazineWhenMagazineTypeWasTyped() {
+        // given
+        System.setIn(new ByteArrayInputStream(TEST_MAGAZINE_INPUT.getBytes()));
+        Library<Multimedium> library = new Library<>();
+        PrintStream printStreamMock = mock(PrintStream.class);
+        Command command = new CreateMultimediaCommand(library, printStreamMock);
+        // when
+        command.execute();
+        // then
+        Magazine magazine = new MagazineBuilder()
+                .title("Nature")
+                .number(10)
+                .pageCount(100)
+                .build();
+        Library<Multimedium> expectedLibrary = new Library<>();
+        expectedLibrary.addMedium(magazine);
+        assertEquals(expectedLibrary, library);
+        verify(printStreamMock, times(1)).println("Typ: ");
+        verify(printStreamMock, times(1)).println("Tytuł: ");
+        verify(printStreamMock, times(1)).println("Numer: ");
+        verify(printStreamMock, times(1)).println("Liczna stron: ");
     }
 
 }
