@@ -1,6 +1,7 @@
 package pl.sda.library.model;
 
 // klasa typu generycznego
+// ale chyba do niczego nie używana w programie
 public abstract class BookBuilder<BookClass extends Book> {
 
     protected String authorFirstName;

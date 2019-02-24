@@ -41,6 +41,7 @@ public class AudioBook extends Book implements DigitalMedium{
                 ", duration=" + duration +
                 ", author=" + author +
                 ", title='" + title + '\'' +
+                ", state=" + state +
                 '}';
     }
 
