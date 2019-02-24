@@ -1,6 +1,5 @@
 package pl.sda.library.command;
 
-import pl.sda.library.model.AudioBook;
 import pl.sda.library.model.AudioBookBuilder;
 import pl.sda.library.model.Format;
 import pl.sda.library.model.Multimedium;

@@ -14,7 +14,9 @@ public class CreateMultimediaCommand implements Command {
     private final PrintStream printStream;
     private final List<CreateMultimediaStrategy> strategies = Arrays.asList(
             new CreateAudioBookCommandStrategy(),
-            new CreatePaperBookCommandStrategy()
+            new CreatePaperBookCommandStrategy(),
+            new CreateMovieCommandStrategy(),
+            new CreateMagazineCommandStrategy()
     );
 
     public CreateMultimediaCommand(Library<Multimedium> library, PrintStream printStream) {

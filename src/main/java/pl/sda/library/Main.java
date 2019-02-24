@@ -1,6 +1,7 @@
 package pl.sda.library;
 
 import pl.sda.library.command.Command;
+import pl.sda.library.command.CreateMultimediaCommand;
 import pl.sda.library.command.DisplayMultimediaCommand;
 import pl.sda.library.command.FilterMultimediaCommand;
 import pl.sda.library.model.*;
@@ -20,6 +21,7 @@ public class Main {
         commands.put("exit", () -> System.exit(0));
         commands.put("display", new DisplayMultimediaCommand(library, System.out));
         commands.put("filter", new FilterMultimediaCommand(library, System.out));
+        commands.put("create", new CreateMultimediaCommand(library, System.out));
         while (true) {
             System.out.println("Podaj komendę: ");
             String commandName = scanner.nextLine();

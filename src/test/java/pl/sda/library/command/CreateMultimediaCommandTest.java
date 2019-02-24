@@ -133,7 +133,7 @@ public class CreateMultimediaCommandTest {
         verify(printStreamMock, times(1)).println("Typ: ");
         verify(printStreamMock, times(1)).println("Tytuł: ");
         verify(printStreamMock, times(1)).println("Numer: ");
-        verify(printStreamMock, times(1)).println("Liczna stron: ");
+        verify(printStreamMock, times(1)).println("Liczba stron: ");
     }
 
 }
