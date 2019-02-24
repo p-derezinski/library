@@ -7,9 +7,9 @@ import java.io.PrintStream;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class CreateMovieCommandStrategy implements CreateMultimediaStrategy {
+class CreateMovieCommandStrategy implements CreateMultimediaStrategy {
 
-    public static final String MOVIE = "Movie";
+    private static final String MOVIE = "Movie";
 
     @Override
     public Multimedium createMedium(Scanner scanner, PrintStream printStream) {
@@ -32,6 +32,7 @@ public class CreateMovieCommandStrategy implements CreateMultimediaStrategy {
 
     @Override
     public boolean isTypeCorrect(String type) {
-        return Objects.equals(type, MOVIE);
+        return Objects.equals(type, MOVIE);        // może też być "return MOVIE.equals(type);",
+                                                   // ale nie powinno być "return type.equals(MOVIE);" bo może się pojawić NullPointerException
     }
 }

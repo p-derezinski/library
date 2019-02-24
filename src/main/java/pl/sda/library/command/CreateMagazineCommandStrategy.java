@@ -7,9 +7,9 @@ import java.io.PrintStream;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class CreateMagazineCommandStrategy implements CreateMultimediaStrategy {
+class CreateMagazineCommandStrategy implements CreateMultimediaStrategy {
 
-    public static final String MAGAZINE = "Magazine";
+    private static final String MAGAZINE = "Magazine";
 
     @Override
     public Multimedium createMedium(Scanner scanner, PrintStream printStream) {

@@ -15,7 +15,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Library<Multimedium> library = createLibrary();
+        //Library<Multimedium> library = createLibrary();
+        Library<Multimedium> library = new Library<>();
         Scanner scanner = new Scanner(System.in);
         Map<String, Command> commands = new HashMap<>();
         commands.put("exit", () -> System.exit(0));
@@ -33,7 +34,6 @@ public class Main {
 
     private static Library<Multimedium> createLibrary() {
         Library<Multimedium> library = new Library<>();
-        //Library<AudioBook> library_2 = new Library<>();
 
         library.addMedium(new PaperBookBuilder()
                 .authorFirstName("C. S.")

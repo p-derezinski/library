@@ -6,9 +6,9 @@ import java.io.PrintStream;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class CreatePaperBookCommandStrategy implements CreateMultimediaStrategy {
+class CreatePaperBookCommandStrategy implements CreateMultimediaStrategy {
 
-    public static final String PAPER_BOOK = "PaperBook";
+    private static final String PAPER_BOOK = "PaperBook";
 
     @Override
     public Multimedium createMedium(Scanner scanner, PrintStream printStream) {

@@ -8,9 +8,9 @@ import java.io.PrintStream;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class CreateAudioBookCommandStrategy implements CreateMultimediaStrategy {
+class CreateAudioBookCommandStrategy implements CreateMultimediaStrategy {
 
-    public static final String AUDIO_BOOK = "AudioBook";
+    private static final String AUDIO_BOOK = "AudioBook";
 
     @Override
     public Multimedium createMedium(Scanner scanner, PrintStream printStream) {
