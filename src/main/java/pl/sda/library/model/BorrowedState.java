@@ -9,6 +9,10 @@ public class BorrowedState implements MultimediumState {
     private String firstName;
     private String lastName;
 
+    public BorrowedState() {
+        this.printStream = System.out;
+    }
+
     public BorrowedState(PrintStream printStream) {
         this.printStream = printStream;
     }
