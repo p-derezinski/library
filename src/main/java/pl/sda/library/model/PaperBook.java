@@ -33,12 +33,15 @@ public class PaperBook extends Book implements PaperMedium{
         return Objects.hash(super.hashCode(), cover);
     }
 
+    // gdyby w klasie Book pola author i title były private, to zamiast np. "author" trzeba by napisać "getAuthor()"
     @Override
-    public String toString() {  // gdyby w klasie Book pola author i title były private, to zamiast np. "author" trzeba by napisać "getAuthor()"
+    public String toString() {
         return "PaperBook{" +
-                "author=" + author +
+                "cover=" + cover +
+                ", pageCount=" + pageCount +
+                ", author=" + author +
                 ", title='" + title + '\'' +
-                ", cover='" + cover.getPolishCoverName() + '\'' +
+                ", state=" + state +
                 '}';
     }
 

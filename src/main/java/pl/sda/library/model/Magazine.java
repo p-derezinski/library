@@ -50,6 +50,7 @@ public class Magazine extends Multimedium implements PaperMedium{
                 "pageCount=" + pageCount +
                 ", number=" + number +
                 ", title='" + title + '\'' +
+                ", state=" + state +
                 '}';
     }
 }
